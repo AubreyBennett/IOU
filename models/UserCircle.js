@@ -13,11 +13,21 @@ UserCircle.init(
         },
         circle_id: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            references: {
+                model: 'circle',
+                key: 'id',
+                unique: false
+            }
         },
         user_id: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            references: {
+                model: 'user',
+                key: 'id',
+                unique: false
+            }
         }
     },
     {
