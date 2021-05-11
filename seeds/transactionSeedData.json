@@ -1,0 +1,26 @@
+[
+    {
+        "description": "Pizza",
+        "value": 20.00 
+    },
+    {
+        "description": "Pizza",
+        "value": 20.00 
+    },
+    {
+        "description": "Drinks",
+        "value": 25.99 
+    },
+    {
+        "description": "Movie Tickets",
+        "value": 12.00 
+    },
+    {
+        "description": "Uber",
+        "value": 15.00 
+    },
+    {
+        "description": "Snacks",
+        "value": 8.00 
+    }
+]
