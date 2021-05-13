@@ -7,13 +7,13 @@ function Invite() {
         <h1>Invite Page</h1>
       </div>
       <div className="input-group mb-3">
-        <input type="text" className="form-control" placeholder="First Name" aria-label="Enter Group Name" />
+        <input type="text" className="form-control" placeholder="First Name" aria-label="First Name" />
       </div>
       <div className="input-group mb-3">
-        <input type="text" className="form-control" placeholder="Last Name" aria-label="Enter Group Name" />
+        <input type="text" className="form-control" placeholder="Last Name" aria-label="Last Name" />
       </div>
       <div className="input-group mb-3">
-        <input type="text" className="form-control" placeholder="Email" aria-label="Enter Group Name" />
+        <input type="text" className="form-control" placeholder="Email" aria-label="Email" />
       </div>
       <button className="w-20 btn btn-lg btn-info" type="button" onClick={(e) => {
         e.preventDefault();
