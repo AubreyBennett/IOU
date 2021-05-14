@@ -3,7 +3,7 @@ import React from 'react';
 function NewGroup() {
   return (
     <>
-      <div className="card" style={{ textAlign: "center", backgroundColor: "blue", marginBottom: "50px" }}>
+      <div className="card bg-info" style={{ textAlign: "center", backgroundColor: "blue", marginBottom: "50px" }}>
         <h1>New Group Page</h1>
       </div>
       <div className="input-group mb-3">
