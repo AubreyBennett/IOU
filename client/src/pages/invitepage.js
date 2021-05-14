@@ -3,7 +3,7 @@ import React from 'react';
 function Invite() {
   return (
     <>
-      <div className="card" style={{ textAlign: "center", backgroundColor: "blue", marginBottom: "50px" }}>
+      <div className="card bg-info" style={{ textAlign: "center", marginBottom: "50px" }}>
         <h1>Invite Page</h1>
       </div>
       <div className="input-group mb-3">
