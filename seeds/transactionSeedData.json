@@ -1,26 +1,37 @@
 [
     {
         "description": "Pizza",
-        "value": 20.00 
+        "value": 20.00,
+        "user_circle_id":1
     },
     {
         "description": "Pizza",
-        "value": 20.00 
+        "value": 20.00,
+        "user_circle_id": 2
+
     },
     {
         "description": "Drinks",
-        "value": 25.99 
+        "value": 25.99,
+        "user_circle_id" :3
+ 
     },
     {
         "description": "Movie Tickets",
-        "value": 12.00 
+        "value": 12.00,
+        "user_circle_id": 4
+
     },
     {
         "description": "Uber",
-        "value": 15.00 
+        "value": 15.00,
+        "user_circle_id": 5
+ 
     },
     {
         "description": "Snacks",
-        "value": 8.00 
+        "value": 8.00,
+        "user_circle_id": 6
+
     }
 ]

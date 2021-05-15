@@ -23,7 +23,17 @@ Transaction.init(
             type: DataTypes.DATE,
             allowNull: false,
             defaultValue: Sequelize.NOW
-        }
+        },
+        user_circle_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'usercircle',
+                key: 'id',
+                unique: false
+            }
+        },
+
     },
     {
         sequelize,

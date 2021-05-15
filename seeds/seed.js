@@ -8,10 +8,11 @@ const userCircleSeedData = require("./userCircleSeedData.json");
 
 const seedDatabase = async () => {
     await sequelize.sync({ force: true });
-    const transactions = await Transaction.bulkCreate(transactionSeedData)
     const users = await User.bulkCreate(userSeedData);
     const circles = await Circle.bulkCreate(circleSeedData);
     const userCircles = await UserCircle.bulkCreate(userCircleSeedData);
+    const transactions = await Transaction.bulkCreate(transactionSeedData)
+
     process.exit(0);
 }
 

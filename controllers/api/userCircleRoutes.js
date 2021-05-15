@@ -31,7 +31,8 @@ router.post('/',async (req, res) => {
   try {
     const userCircleData = await UserCircle.create(
       {
-      userCircle_name: req.body.userCircle_name 
+      circle_id: req.body.circle_id, 
+      user_id: req.body.user_id
     });
     res.status(200).json(userCircleData);
   } catch (err) {

@@ -40,7 +40,7 @@ router.post('/', async (req, res) => {
     try {
         const transactionData = await Transaction.create(
             {
-                discription: req.body.discription,
+                description: req.body.description,
                 value: req.body.value
             });
         res.status(200).json(transactionData);
@@ -53,7 +53,7 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
     try {
         const transactionData = await Transaction.update({
-            discription: req.body.discription,
+            description: req.body.description,
             value: req.body.value
         },
             {

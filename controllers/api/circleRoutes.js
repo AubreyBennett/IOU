@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Circle } = require('../../models');
+const { User, Circle, } = require('../../models');
 
 // The `/api/categories` endpoint
  // find all categories
@@ -7,7 +7,7 @@ const { User, Circle } = require('../../models');
 router.get('/', async (req, res) => {
  try {
     const circleData = await Circle.findAll(req.params.id, {
-      include: [{ model:User}]
+      include: [{ model:User, attributes: { exclude: ['password','usercircle'] }}]
     });
     res.status(200).json(circleData);
   } catch (err) {
@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 router.get('/:id',async (req, res) => {
   try {
     const circleData = await Circle.findByPk(req.params.id, {
-      include: [{ model:User}]
+      include: [{ model:User, attributes: { exclude: ['password','usercircle'] }}]
     });
     res.status(200).json(circleData);
   } catch (err) {

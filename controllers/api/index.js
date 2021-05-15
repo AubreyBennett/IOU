@@ -7,6 +7,6 @@ const userCircleRoutes = require('./userCircleRoutes')
 router.use('/users', userRoutes);
 router.use('/circles', circleRoutes);
 router.use('/transactions', transactionRoutes);
-router.use('./userCircles', userCircleRoutes);
+router.use('/usercircles', userCircleRoutes);
 
 module.exports = router;
