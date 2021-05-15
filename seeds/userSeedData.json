@@ -1,26 +1,38 @@
 [
     {
+        "name": "Alyssa",
         "username": "Alyssa",
+        "email": "Alyssa@Alyssa.com",
         "password": "Password1234"
     },
     {
+        "name": "Aubrey",
         "username": "Aubrey",
+        "email": "Aubrey@Aubrey.com",
         "password": "Password1234"
     },
     {
+        "name": "Juan",
         "username": "Juan",
+        "email": "Juan@Juan.com",
         "password": "Password1234"
     },
     {
+        "name": "Kimo",
         "username": "Kimo",
+        "email": "Kimo@Kimo.com",
         "password": "Password1234"
     },
     {
+        "name": "Admin",
         "username": "Admin",
+        "email": "Admin@Admin.com",
         "password": "Password1234"
     },
     {
+        "name": "JustAnotherUser",
         "username": "JustAnotherUser",
+        "email": "JustAnotherUser@JustAnotherUser.com",
         "password": "Password1234"
     }
 ]
