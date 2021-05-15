@@ -2,8 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/navbar";
 import Wrapper from "./components/Wrapper/wrapper";
-import Login from "./pages/login";
-import Signup from "./pages/signup";
+import LoginSignup from "./pages/loginSignup"
 import Dashboard from "./pages/dashboard";
 import NewGroup from "./pages/newgroup";
 import GroupPage from "./pages/grouppage";
@@ -17,8 +16,7 @@ function App() {
       <div>
         <Navbar />
         <Wrapper>
-          <Route exact path="/" component={Login} />
-          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/" component={LoginSignup} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/newgroup" component={NewGroup} />
           <Route exact path="/grouppage" component={GroupPage} />

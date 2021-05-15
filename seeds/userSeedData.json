@@ -1,36 +1,42 @@
 [
     {
-        "name": "Alyssa",
+        "first_name": "Alyssa",
+        "last_name": "lastname",
         "username": "Alyssa",
         "email": "Alyssa@Alyssa.com",
         "password": "Password1234"
     },
     {
-        "name": "Aubrey",
+        "first_name": "Aubrey",
+        "last_name": "lastname",
         "username": "Aubrey",
         "email": "Aubrey@Aubrey.com",
         "password": "Password1234"
     },
     {
-        "name": "Juan",
+        "first_name": "Juan",
+        "last_name": "lastname",
         "username": "Juan",
         "email": "Juan@Juan.com",
         "password": "Password1234"
     },
     {
-        "name": "Kimo",
+        "first_name": "Kimo",
+        "last_name": "lastname",
         "username": "Kimo",
         "email": "Kimo@Kimo.com",
         "password": "Password1234"
     },
     {
-        "name": "Admin",
+        "first_name": "Admin",
+        "last_name": "lastname",
         "username": "Admin",
         "email": "Admin@Admin.com",
         "password": "Password1234"
     },
     {
-        "name": "JustAnotherUser",
+        "first_name": "JustAnotherUser",
+        "last_name": "lastname",
         "username": "JustAnotherUser",
         "email": "JustAnotherUser@JustAnotherUser.com",
         "password": "Password1234"
