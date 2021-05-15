@@ -29,12 +29,14 @@ router.get('/:id', async (req, res) => {
 
 // CREATE new user
 router.post('/', async (req, res) => {
+    console.log('request here');
     try {
         const userData = await User.create(req.body);
 
         req.session.save(() => {
             req.session.user_id = userData.id;
-            req.session.username = userData.username
+            req.session.first_name = userData.first_name;
+            req.session.last_name = userData.last_name;
             req.session.logged_in = true;
 
             res.status(200).json(userData);
@@ -47,8 +49,8 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
     try {
         const userData = await User.update({
-            name: req.body.name,
-            username: req.body.username,
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
             email: req.body.email,
             password: req.body.password
         },
