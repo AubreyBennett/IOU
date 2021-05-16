@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router';
+import { useHistory } from "react-router-dom";
 
 function Signup() {
+  let history = useHistory();
+
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [email, setEmail] = useState();
@@ -28,19 +30,19 @@ function Signup() {
       }
       
     ).then(
-      () => {
-        console.log('request sent!')
+      (data) => {
+        console.log(data);
+        if(data.status === 200) {
+          history.push("/dashboard");
+        } else {
+          alert("There was an error");
+        }
       }
     )
       .catch(
         (err) => {
           console.log(err)
         })
-    console.log(firstName);
-    console.log(lastName);
-    console.log(email);
-    console.log(password);
-    <Redirect to="/dashboard" />
   }
 
 
