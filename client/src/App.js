@@ -4,8 +4,8 @@ import Navbar from "./components/Navbar/navbar";
 import Wrapper from "./components/Wrapper/wrapper";
 import LoginSignup from "./pages/loginSignup"
 import Dashboard from "./pages/dashboard";
-import NewGroup from "./pages/newgroup";
-import GroupPage from "./pages/grouppage";
+import NewCircle from "./pages/newcircle";
+import CirclePage from "./pages/circlepage";
 import Invite from "./pages/invitepage";
 import Transactions from "./pages/transactionpage";
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -18,8 +18,8 @@ function App() {
         <Wrapper>
           <Route exact path="/" component={LoginSignup} />
           <Route exact path="/dashboard" component={Dashboard} />
-          <Route exact path="/newgroup" component={NewGroup} />
-          <Route exact path="/grouppage" component={GroupPage} />
+          <Route exact path="/newcircle" component={NewCircle} />
+          <Route exact path="/circlepage" component={CirclePage} />
           <Route exact path="/invitepage" component={Invite} />
           <Route exact path="/transaction" component={Transactions} />
         </Wrapper>
