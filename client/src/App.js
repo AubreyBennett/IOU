@@ -7,7 +7,7 @@ import Dashboard from "./pages/dashboard";
 import NewGroup from "./pages/newgroup";
 import GroupPage from "./pages/grouppage";
 import Invite from "./pages/invitepage";
-import Transactions from "./pages/transaction";
+import Transactions from "./pages/transactionpage";
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
