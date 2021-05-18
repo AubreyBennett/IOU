@@ -1,22 +1,22 @@
 import React from 'react';
 
-function GroupPage() {
+function CirclePage() {
   return (
     <>
       <div className="card bg-info" style={{ textAlign: "center", backgroundColor: "blue", marginBottom: "50px" }}>
         <h1>My Group Page</h1>
       </div>
-      <div class="card text-center" style={{ marginBottom: "50px"}}>
-        <div class="card-header">
+      <div className="card text-center" style={{ marginBottom: "50px"}}>
+        <div className="card-header">
           My Transactions
       </div>
-        <div class="card-body">
-          <p class="card-text">Where all the transactions go</p>
+        <div className="card-body">
+          <p className="card-text">Where all the transactions go</p>
         </div>
       </div>
-      <div class="card text-center" style={{ marginBottom: "50px"}}>
-        <div class="card-body">
-          <p class="card-text">Math stuff</p>
+      <div className="card text-center" style={{ marginBottom: "50px"}}>
+        <div className="card-body">
+          <p className="card-text">Math stuff</p>
         </div>
       </div>
       <button className="w-20 btn btn-lg btn-info" type="button" onClick={(e) => {
@@ -31,4 +31,4 @@ function GroupPage() {
   );
 }
 
-export default GroupPage;
+export default CirclePage;

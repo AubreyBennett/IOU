@@ -41,18 +41,18 @@ function Navbar() {
           </li>
           <li className="nav-item">
             <Link
-              to="/newgroup"
-              className={window.location.pathname === "/newgroup" ? "nav-link active" : "nav-link"}
+              to="/newcircle"
+              className={window.location.pathname === "/newcircle" ? "nav-link active" : "nav-link"}
             >
-              New Group
+              New Circle
             </Link>
           </li>
           <li className="nav-item">
             <Link
-              to="/grouppage"
-              className={window.location.pathname === "/grouppage" ? "nav-link active" : "nav-link"}
+              to="/circlepage"
+              className={window.location.pathname === "/circlepage" ? "nav-link active" : "nav-link"}
             >
-              Group Page
+              Circle Page
             </Link>
           </li>
           <li className="nav-item">
