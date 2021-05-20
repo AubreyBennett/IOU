@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
 
-function Login() {
+function Login(props) {
 
   let history = useHistory();
 
@@ -31,6 +31,7 @@ function Login() {
         if(data.message === "Incorrect email or password, please try again") {
           alert(data.message)
         } else {
+          props.handleLogin();
           history.push("/dashboard");
         }
 

@@ -16,5 +16,6 @@ Circle.belongsToMany(User, {
     } 
 })
 
+Transaction.belongsTo(UserCircle)
 
 module.exports = { Transaction, User, Circle, UserCircle }
