@@ -24,13 +24,13 @@ Transaction.init(
             allowNull: false,
             defaultValue: Sequelize.NOW
         },
-        user_circle_id: {
+        usercircle_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
                 model: 'usercircle',
                 key: 'id',
-                unique: false
+                unique: true
             }
         },
 
