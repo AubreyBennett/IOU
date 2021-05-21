@@ -15,9 +15,8 @@ router.get('/authcheck', (req, res) => {
 
 //  find all users
 router.get('/', async (req, res) => {
-
     try {
-        const userData = await User.findAll(req.params.id, {
+        const userData = await User.findAll({
             attributes: { exclude: ['password'] }
         });
         res.status(200).json(userData);
