@@ -13,7 +13,7 @@ function Navbar() {
         <ul className="navbar-nav">
           <li className="nav-item">
             <Link
-              to="/"
+              to="/login"
               className={
                 window.location.pathname === "/"
                   ? "nav-link active"

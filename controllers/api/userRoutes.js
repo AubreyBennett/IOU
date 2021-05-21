@@ -2,6 +2,17 @@ const router = require('express').Router();
 const { User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+// AuthCheck
+router.get('/authcheck', (req, res) => {
+    console.log("We hit the route");
+    res.send(req.session)
+    // if (req.session.loggedIn) {
+    //   res.status(200).json({loggedIn: true});
+    // } else {
+    //   res.status(401).json({loggedIn: false});
+    // }
+  });
+
 //  find all users
 router.get('/', async (req, res) => {
 
@@ -21,21 +32,13 @@ router.get('/:id', async (req, res) => {
         const userData = await User.findByPk(req.params.id,{
             attributes: { exclude: ['password'] }
         });
-        res.status(200).json(userData);
+        return res.status(200).json(userData);
     } catch (err) {
-        res.status(500).json(err);
+        return res.status(500).json(err);
     }
 });
 
-// AuthCheck
-router.get('/authcheck', (req, res) => {
-    console.log("We hit the route");
-    if (req.session.loggedIn) {
-      res.status(200).json(true);
-    } else {
-      res.status(401).json(false);
-    }
-  });
+
 
 // CREATE new user
 router.post('/', async (req, res) => {
@@ -44,10 +47,8 @@ router.post('/', async (req, res) => {
         const userData = await User.create(req.body);
 
         req.session.save(() => {
-            req.session.user_id = userData.id;
-            req.session.first_name = userData.first_name;
-            req.session.last_name = userData.last_name;
-            req.session.logged_in = true;
+            req.session.userId = userData.id;
+            req.session.loggedIn = true;
 
             res.status(200).json(userData);
         });
@@ -56,25 +57,25 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.put('/:id', async (req, res) => {
-    try {
-        const userData = await User.update({
-            first_name: req.body.first_name,
-            last_name: req.body.last_name,
-            email: req.body.email,
-            password: req.body.password
-        },
-            {
-                where: {
-                    id: req.params.id,
-                }
-            },
-        );
-        res.status(200).json(userData);
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
+// router.put('/:id', async (req, res) => {
+//     try {
+//         const userData = await User.update({
+//             first_name: req.body.first_name,
+//             last_name: req.body.last_name,
+//             email: req.body.email,
+//             password: req.body.password
+//         },
+//             {
+//                 where: {
+//                     id: req.params.id,
+//                 }
+//             },
+//         );
+//         res.status(200).json(userData);
+//     } catch (err) {
+//         res.status(500).json(err);
+//     }
+// });
 // Login 
 router.post('/login', async (req, res) => {
     console.log(req.body.email);
@@ -99,8 +100,7 @@ router.post('/login', async (req, res) => {
         }
 
         req.session.save(() => {
-            req.session.user_id = userData.id;
-            req.session.email = userData.email;
+            req.session.userId = userData.id;
             req.session.loggedIn = true;
 
             res.json({ user: userData, message: 'You are now logged in!' });
@@ -116,10 +116,14 @@ router.post('/logout', (req, res) => {
     console.log("IM HEREEE");
     if (req.session.loggedIn) {
         req.session.destroy(() => {
-            res.status(204).end();
+            res.status(204).json({
+                message: "logged out!"
+            });
         });
     } else {
-        res.status(404).end();
+        res.status(404).json({
+            message: "You are not logged in!"
+        });
     }
 });
 //   delete user
