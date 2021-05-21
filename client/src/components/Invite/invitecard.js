@@ -6,7 +6,7 @@ function InviteCard({data}) {
     return (
         <>
             <div className="card-body">
-                <p className="card-text">{data.description} {data.value} {data.date}</p>
+                <p className="card-text">{data.user}</p>
             </div>
 
         </>
