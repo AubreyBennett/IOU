@@ -1,27 +1,19 @@
+import { prependOnceListener } from 'npm';
 import React from 'react';
+import InviteCard from '../components/Invite/invitecard'
 
-function Invite() {
+function Invite(props) {
   return (
     <>
       <div className="card bg-info" style={{ textAlign: "center", marginBottom: "50px" }}>
         <h1>Invite Page</h1>
       </div>
-      <div className="input-group mb-3">
-        <input type="text" className="form-control" placeholder="First Name" aria-label="First Name" />
-      </div>
-      <div className="input-group mb-3">
-        <input type="text" className="form-control" placeholder="Last Name" aria-label="Last Name" />
-      </div>
-      <div className="input-group mb-3">
-        <input type="text" className="form-control" placeholder="Email" aria-label="Email" />
-      </div>
-      <label for="groups">Choose a Group Name:</label>
+      <InviteCard />
+      <label for="groups">Choose a Circle Name:</label>
 
       <select name="groups" id="cars">
-        <option value="group1">Group 1</option>
-        <option value="group2">Group 2</option>
-        <option value="group3">Group 3</option>
-        <option value="group4">Group 4</option>
+        <option value="group">{props.group[i]}</option>
+
       </select>
       <button className="w-20 btn btn-lg btn-info" type="button" onClick={(e) => {
         e.preventDefault();
