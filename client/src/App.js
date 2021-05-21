@@ -9,29 +9,41 @@ import CirclePage from "./pages/circlepage";
 import Invite from "./pages/invitepage";
 import Transactions from "./pages/transactionpage";
 import 'bootstrap/dist/css/bootstrap.min.css'
-// import { useCookies } from 'react-cookie';
+import { useHistory } from "react-router-dom";
+import Transaction from "./pages/transactionpage";
 
 function App() {
 
-  // const [cookie, setCookie] = useCookies(['loggedIn']);
-  // console.log(cookie)
-  
   const [userState, setUserState] = useState({
-    loggedIn: false
+    loggedIn: false,
+    userId: 0
   })
-  //------
- 
-  const handleLogin = () => {
-    // setUserState({
-    //   loggedIn: true
-    // });
-    // setCookie('loggedIn', true);
-  };
-  //========
 
-  // if (!userState.loggedIn) {
-  //   return <LoginSignup handleLogin={handleLogin} />
-  // }
+  const handleLogin = () => {
+    setUserState({
+      loggedIn: true
+    });
+  }
+
+  const history = useHistory();
+  useEffect(() => {
+    fetch("/api/users/authcheck", {
+      method: "GET"
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        setUserState({
+          loggedIn: true,
+          userId: data.userId
+        })
+      })
+      .catch(err => {
+        console.log(err);
+        history.push("/login")
+      });
+  }, []);
+
 
   return (
 
@@ -44,10 +56,22 @@ function App() {
             exact path='/login'
             component={() => <LoginSignup handleLogin={handleLogin} />}
           />
-          <Route exact path="/newcircle" component={NewCircle} />
-          <Route exact path="/circlepage" component={CirclePage} />
-          <Route exact path="/invitepage" component={Invite} />
-          <Route exact path="/transaction" component={Transactions} />
+          <Route
+            exact path='/newcircle'
+            component={() => <NewCircle userId={userState.userId} />}
+          />
+          <Route
+            exact path='/circlepage'
+            component={() => <CirclePage userId={userState.userId} />}
+          />
+          <Route
+            exact path='/invitepage'
+            component={() => <Invite userId={userState.userId} />}
+          />
+          <Route
+            exact path='/transaction'
+            component={() => <Transactions userId={userState.userId} />}
+          />
         </Wrapper>
       </div>
     </Router>

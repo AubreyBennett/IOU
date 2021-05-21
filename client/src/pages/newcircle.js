@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { useHistory } from "react-router-dom";
 
-function NewGroup() {
+function NewGroup({userId}) {
   let history = useHistory();
 
   const [circleState, setCircleState] = useState({
@@ -25,8 +25,19 @@ function NewGroup() {
     })
     .then(res => res.json())
     .then(data => {
+      // Adding User to Circle
+      fetch("/api/usercircles", {
+        method: "POST",
+        headers:{
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          circle_id: data.id,
+          user_id: userId
+        })
+      })
       console.log(data);
-      history.push("/circlepage");
+      // history.push("/circlepage");
     })
 
   }
