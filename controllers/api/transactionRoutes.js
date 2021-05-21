@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Transaction, Circle } = require('../../models');
+const { User, Transaction, Circle, UserCircle } = require('../../models');
 
 // The `/api/transactions` endpoint
 // find all transactions
@@ -19,6 +19,41 @@ router.get('/', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+// Find Transactions of specific Circle
+router.get("/circle/:id", async (req, res) => {
+    try {
+        const transactionData = await Transaction.findAll({
+            include: {
+                model: UserCircle,
+                where: {
+                    circleId: req.params.id
+                }
+            },
+        });
+        res.status(200).json(transactionData)
+    } catch (error) {
+        res.status(500).json(err);
+    }
+})
+// Find transactions of a User
+
+router.get("/user/:id", async (req, res) => {
+    try {
+        const transactionData = await Transaction.findAll({
+            include: {
+                model: UserCircle,
+                where: {
+                    userId: req.params.id
+                }
+            },
+        });
+        res.status(200).json(transactionData)
+    } catch (error) {
+        res.status(500).json(err);
+    }
+})
+
 // find one transaction by its `id` value
 router.get('/:id', async (req, res) => {
     try {

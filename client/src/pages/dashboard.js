@@ -1,10 +1,37 @@
-import React from 'react';
-
+import React, { useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 function Dashboard(props) {
+  const history = useHistory();
+  useEffect(() => {
+    fetch("/api/users/authcheck", {
+      method: "GET"
+    })
+      .then(res => {
+        console.log(res);
+        if (res.status === 200) {
+          console.log("200!!!");
+        } else {
+          console.log("401!!!");
+          history.push("/login");
+        }
+      })
+      .catch(err => {
+        console.log(err);
+        history.push("/login")
+      });
+  }, []);
+
+  const handleLogout = () => {
+    console.log("here");
+    fetch("api/users/logout", {
+      method: "POST"
+    })
+  }
+
   return (
     <div className="container" >
       <div className="row">
-        <div className="col-lg-12" style={{ width: '100%'}}>
+        <div className="col-lg-12" style={{ width: '100%' }}>
           <div className="row" style={{ justifyContent: 'center' }}>
             <div className="card text-dark bg-info mb-3" style={{ maxWidth: '18rem' }}>
               <div className="card-header">Welcome {props.name}</div>
@@ -40,6 +67,9 @@ function Dashboard(props) {
           <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         </div> */}
           </div>
+          <button onClick={
+            () => handleLogout()
+          }>LOGOUT</button>
         </div>
       </div>
     </div>

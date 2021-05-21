@@ -27,6 +27,16 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+// AuthCheck
+router.get('/authcheck', (req, res) => {
+    console.log("We hit the route");
+    if (req.session.loggedIn) {
+      res.status(200).json(true);
+    } else {
+      res.status(401).json(false);
+    }
+  });
+
 // CREATE new user
 router.post('/', async (req, res) => {
     console.log('request here');
@@ -103,6 +113,7 @@ router.post('/login', async (req, res) => {
 
 // Logout
 router.post('/logout', (req, res) => {
+    console.log("IM HEREEE");
     if (req.session.loggedIn) {
         req.session.destroy(() => {
             res.status(204).end();
