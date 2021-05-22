@@ -40,7 +40,7 @@ function NewGroup({userId}) {
         })
       })
       console.log(data);
-      // history.push("/circlepage");
+      history.push("/invitepage");
     })
 
   }
