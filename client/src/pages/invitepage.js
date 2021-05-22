@@ -1,9 +1,10 @@
-
 import React, { useState, useEffect } from 'react';
 import InviteCard from '../components/Invite/invitecard'
-
+import {useHistory} from "react-router-dom"
 
 function Invite(props) {
+
+  let history = useHistory();
 
   console.log(props);
   // get all transactions associated with a user
@@ -19,7 +20,19 @@ function Invite(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(submitState);
+    fetch("/api/usercircles/addUsers", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        ...submitState
+      }) 
+    })
+    .then((data) => {
+      history.push("/circlepage")
+    })
+    .catch()
 
   }
 

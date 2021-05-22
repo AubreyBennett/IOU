@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import { useHistory } from "react-router-dom";
 
 function NewGroup({userId}) {
+
+  console.log(userId);
+
   let history = useHistory();
 
   const [circleState, setCircleState] = useState({
@@ -37,7 +40,7 @@ function NewGroup({userId}) {
         })
       })
       console.log(data);
-      // history.push("/circlepage");
+      history.push("/invitepage");
     })
 
   }
