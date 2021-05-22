@@ -1,9 +1,7 @@
 const router = require('express').Router();
-const { User, Circle, } = require('../../models');
+const { User, Circle, UserCircle, } = require('../../models');
 
-// The `/api/categories` endpoint
- // find all categories
-  // be sure to include its associated Products
+
 router.get('/', async (req, res) => {
  try {
     const circleData = await Circle.findAll(req.params.id, {
@@ -14,6 +12,38 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// Find all circles by specific user
+
+router.get("/user/:id", async (req, res) => {
+  try {
+     const userData = await User.findAll({
+       where: {
+        id: req.params.id
+       },
+       include: {
+         model: Circle,
+         through: UserCircle
+       },
+       attributes: {
+         exclude: ["password"]
+       }
+     });
+     const circlesData = userData[0].dataValues.circles;
+
+     const circlesNames = circlesData.map((circle) => {
+       return {
+         id: circle.id,
+         name: circle.circle_name
+       }
+     })
+     res.status(200).json(circlesNames);
+   } catch (err) {
+     res.status(500).json(err);
+   }
+ })
+
+
 // find one Circle by its `id` value
   // be sure to include its associated Products
 router.get('/:id',async (req, res) => {
