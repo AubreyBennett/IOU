@@ -1,6 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-function CirclePage() {
+function CirclePage(props) {
+
+  console.log(props)
+
+  useEffect(() => {
+    const transactions = {
+      method: 'GET', 
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    }
+
+      const url = 'api/transactions/circle/' + props.circleState.circleID
+
+    fetch(url, transactions)
+    .then( (data) => data.json() ) 
+    .then((data) => {console.log(data)})
+  })
+
+
+
   return (
     <>
       <div className="card bg-info" style={{ textAlign: "center", backgroundColor: "blue", marginBottom: "50px" }}>
