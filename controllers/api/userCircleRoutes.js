@@ -28,6 +28,7 @@ router.get('/:id',async (req, res) => {
 });
 // create a new userCircle
 router.post('/',async (req, res) => {
+  console.log(req.body);
   try {
     const userCircleData = await UserCircle.create(
       {
@@ -36,6 +37,7 @@ router.post('/',async (req, res) => {
     });
     res.status(200).json(userCircleData);
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
