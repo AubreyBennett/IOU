@@ -10,7 +10,7 @@ import Invite from "./pages/invitepage";
 import Transactions from "./pages/transactionpage";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useHistory } from "react-router-dom";
-import Transaction from "./pages/transactionpage";
+
 
 function App() {
 
@@ -26,6 +26,7 @@ function App() {
   }
 
   const history = useHistory();
+
   useEffect(() => {
     fetch("/api/users/authcheck", {
       method: "GET"
@@ -42,7 +43,7 @@ function App() {
         console.log(err);
         history.push("/login")
       });
-  }, []);
+  }, [history]);
 
 
   return (

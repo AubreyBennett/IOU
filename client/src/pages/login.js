@@ -45,7 +45,9 @@ function Login(props) {
           <div className="col-lg-3"></div>
           <div className="col-lg-6">
             <form className="p-4 p-md-5 border rounded-5 bg-info">
-              <div className="form-floating mb-3">
+              <div className="form-floating mb-3" style={{textAlign: "center", }}>
+                <h2 style={{color: 'white'}}>Welcome to IOU</h2> 
+                <h3 className= "mb-3" style={{color: 'white'}}>Sign in here</h3>
                 <input
                   className="form-control"
                   type="email"
