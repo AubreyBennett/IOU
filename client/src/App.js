@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/navbar";
+import LoginNavbar from "./components/Login-Navbar/loginnav";
 import Wrapper from "./components/Wrapper/wrapper";
 import LoginSignup from "./pages/loginSignup"
 import Dashboard from "./pages/dashboard";
@@ -8,11 +9,13 @@ import NewCircle from "./pages/newcircle";
 import CirclePage from "./pages/circlepage";
 import Invite from "./pages/invitepage";
 import Transactions from "./pages/transactionpage";
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { useHistory } from "react-router-dom";
-
+import RenderNav from "./components/RenderNav"
 
 function App() {
+
+  
 
   const [userState, setUserState] = useState({
     loggedIn: false,
@@ -25,9 +28,11 @@ function App() {
     });
   }
 
-  const history = useHistory();
+  
 
+  let history = useHistory();
   useEffect(() => {
+
     fetch("/api/users/authcheck", {
       method: "GET"
     })
@@ -41,7 +46,7 @@ function App() {
       })
       .catch(err => {
         console.log(err);
-        history.push("/login")
+        history.push("/login");
       });
   }, [history]);
 
@@ -50,7 +55,7 @@ function App() {
 
     <Router>
       <div>
-        <Navbar />
+        <RenderNav />
         <Wrapper>
           <Route exact path={["/", "/dashboard"]} component={Dashboard} />
           <Route
