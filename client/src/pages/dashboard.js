@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useHistory } from "react-router-dom";
+
 function Dashboard(props) {
   const history = useHistory();
   useEffect(() => {
@@ -21,12 +22,7 @@ function Dashboard(props) {
       });
   }, []);
 
-  const handleLogout = () => {
-    console.log("here");
-    fetch("api/users/logout", {
-      method: "POST"
-    })
-  }
+ 
 
   return (
     <div className="container" >
@@ -67,9 +63,6 @@ function Dashboard(props) {
           <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         </div> */}
           </div>
-          <button onClick={
-            () => handleLogout()
-          }>LOGOUT</button>
         </div>
       </div>
     </div>
