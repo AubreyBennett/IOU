@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import "./style.css";
 
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
-function Navbar() {
+function Navbar(props) {
+
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <Link className="navbar-brand" to="/dashboard">
@@ -19,8 +21,9 @@ function Navbar() {
                   ? "nav-link active"
                   : "nav-link"
               }
+              onClick={() => props.handleLogout}
             >
-              Login
+              Logout
             </Link>
           </li>
           <li className="nav-item">
