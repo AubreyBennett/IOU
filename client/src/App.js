@@ -50,17 +50,26 @@ function App() {
       });
   }, [history]);
 
+  const handleLogout = () => {
+    console.log("here");
+    fetch("api/users/logout", {
+      method: "POST",
+      headers: 
+      { 'Content-Type': 'application/json' },
+    })
+  };
+
 
   return (
 
     <Router>
       <div>
-        <RenderNav />
+        <RenderNav userState={userState} handleLogout={handleLogout} />
         <Wrapper>
           <Route exact path={["/", "/dashboard"]} component={Dashboard} />
           <Route
             exact path='/login'
-            component={() => <LoginSignup handleLogin={handleLogin} />}
+            component={() => <LoginSignup handleLogin={handleLogin} handleLogout={handleLogout}/>}
           />
           <Route
             exact path='/newcircle'
