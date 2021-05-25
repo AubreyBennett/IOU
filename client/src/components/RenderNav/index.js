@@ -2,11 +2,13 @@ import React from "react";
 import Navbar from "../Navbar/navbar";
 import LoginNav from "../Login-Navbar/loginnav";
 
-function RenderNav (userState) {
+function RenderNav (props) {
 
-    if ( userState === true ) {
+    console.log(props)
+
+    if ( props.userState.loggedIn ) {
         return (
-            <Navbar />
+            <Navbar handleLogout={props.handleLogout}/>
         )
     } else { 
         return(
