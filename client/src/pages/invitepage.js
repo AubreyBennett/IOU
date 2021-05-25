@@ -4,6 +4,8 @@ import {useHistory} from "react-router-dom"
 
 function Invite(props) {
 
+  const handleCircle = props.handleCircle
+
   let history = useHistory();
 
   console.log(props);
@@ -30,6 +32,7 @@ function Invite(props) {
       }) 
     })
     .then((data) => {
+      handleCircle(submitState.circleID);
       history.push("/circlepage")
     })
     .catch()

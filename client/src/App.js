@@ -14,8 +14,20 @@ import { useHistory } from "react-router-dom";
 import RenderNav from "./components/RenderNav"
 
 function App() {
+// setting circle state
+const [ circleState, setCircleState] = useState({
+  circleID: 0
+});
 
-  
+// set circle state
+const handleCircle = (id) => {
+  setCircleState({
+    circleID: id
+  })
+
+}
+
+// setting user state
 
   const [userState, setUserState] = useState({
     loggedIn: false,
@@ -32,6 +44,7 @@ function App() {
 
   let history = useHistory();
   useEffect(() => {
+    // authcheck
 
     fetch("/api/users/authcheck", {
       method: "GET"
@@ -48,7 +61,9 @@ function App() {
         console.log(err);
         history.push("/login");
       });
-  }, [history]);
+
+   }, [history]);
+
 
   const handleLogout = () => {
     console.log("here");
@@ -77,11 +92,11 @@ function App() {
           />
           <Route
             exact path='/circlepage'
-            component={() => <CirclePage userId={userState.userId} />}
+            component={() => <CirclePage userId={userState.userId} circleState={circleState}/>}
           />
           <Route
             exact path='/invitepage'
-            component={() => <Invite userId={userState.userId} />}
+            component={() => <Invite userId={userState.userId} handleCircle={handleCircle} />}
           />
           <Route
             exact path='/transaction'
