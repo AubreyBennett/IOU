@@ -1,23 +1,50 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 
-function CirclePage(props) {
+function CirclePage() {
+  // creating state to capture all the circle transactions
+  const [transactionState, newTransactionState] = useState();
 
-  console.log(props)
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    fetch('/api/transactions', {
+      method: "POST", 
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        ...transactionState
+      })
+    })
+    .then((data) => {
+      console.log("Transaction successful");
+    })
+    .catch();
+  }
+
+  function handleTransaction(e){
+    
+  }
 
   useEffect(() => {
-    const transactions = {
-      method: 'GET', 
+    const options = {
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       }
     }
+    fetch(`/api/transactions/circle/user`, options)
+      .then(res => res.json())
+      .then(data => { console.log(data)}
+      ).catch(err => {
+        console.log(err)
+      })
 
-      const url = 'api/transactions/circle/' + props.circleState.circleID
+  }, []);
 
-    fetch(url, transactions)
-    .then( (data) => data.json() ) 
-    .then((data) => {console.log(data)})
-  })
+
+    
+
 
 
 
@@ -26,7 +53,7 @@ function CirclePage(props) {
       <div className="card bg-info" style={{ textAlign: "center", backgroundColor: "blue", marginBottom: "50px" }}>
         <h1>My Group Page</h1>
       </div>
-      <div className="card text-center" style={{ marginBottom: "50px"}}>
+      <div className="card text-center" style={{ marginBottom: "50px" }}>
         <div className="card-header">
           My Transactions
       </div>
@@ -34,12 +61,28 @@ function CirclePage(props) {
           <p className="card-text">Where all the transactions go</p>
         </div>
       </div>
-      <div className="card text-center" style={{ marginBottom: "50px"}}>
+      {/* <div className="card text-center" style={{ marginBottom: "50px" }}>
         <div className="card-body">
           <p className="card-text">Math stuff</p>
         </div>
+      </div> */}
+      <label for="cars">Choose a Circle Name:</label>
+
+      <select name="circle" id="circle">
+        <option value="volvo">Group 1</option>
+        <option value="saab">Group 2</option>
+        <option value="mercedes">Group 3</option>
+        <option value="audi">Group 4</option>
+      </select>
+      <div className="input-group mb-3">
+        <input type="text" className="form-control" placeholder="Enter Payment Description" aria-label="Enter Payment Description" />
       </div>
-      <button className="w-20 btn btn-lg btn-info" type="button" onClick={(e) => {
+      <div className="input-group mb-3">
+        <input type="text" className="form-control" placeholder="Enter Payment Amount" aria-label="Enter Payment Amount" />
+      </div>
+      <button className="w-20 btn btn-lg btn-info" 
+      type="button" 
+      onClick={(e) => {
         e.preventDefault();
         window.location.pathname = '/transaction';
       }} id="button-addon2">Pay Now</button>

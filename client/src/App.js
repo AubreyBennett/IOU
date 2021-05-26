@@ -14,6 +14,7 @@ import { useHistory } from "react-router-dom";
 import RenderNav from "./components/RenderNav"
 
 function App() {
+
 // setting circle state
 const [ circleState, setCircleState] = useState({
   circleID: 0
@@ -72,9 +73,11 @@ const handleCircle = (id) => {
       headers: 
       { 'Content-Type': 'application/json' },
     })
+    .then(res => res.json())
+    .then(data => console.log(data))
   };
 
-
+  console.log(userState);
   return (
 
     <Router>
