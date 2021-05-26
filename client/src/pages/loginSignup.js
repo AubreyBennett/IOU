@@ -3,8 +3,6 @@ import Login from "./login";
 import Signup from "./signup";
 
 function LoginSignup(props) {
-    // props.handleLogout();
-
     return (
         <>
         <Login handleLogin={props.handleLogin} />
