@@ -5,8 +5,12 @@ import TransactionCard from '../components/Transaction/transaction';
 function Transaction(props) {
 
 
+  console.log(props.userId)
   // get all transactions associated with a user
-  const [transactionState, setTransactinState] = useState([]);
+  const [transactionState, setTransactionState] = useState([]);
+
+
+  const url = '/api/transactions/user/' + props.userId
 
   useEffect(() => {
     const options = {
@@ -15,9 +19,9 @@ function Transaction(props) {
         'Content-Type': 'application/json',
       }
     }
-    fetch(`/api/transactions/`, options)
+    fetch(url, options)
       .then(res => res.json())
-      .then(data => { setTransactinState(data) }
+      .then(data => { setTransactionState(data) }
       ).catch(err => {
         console.log(err)
       })
