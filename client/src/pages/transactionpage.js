@@ -4,7 +4,14 @@ import TransactionCard from '../components/Transaction/transaction';
 
 function Transaction(props) {
 
+  const[circleState, setCircleState] = useState([]);
+  
+  const [submitState, setSubmitState] = useState({
 
+    circleID: 0, 
+    users: []
+
+  });
   console.log(props.userId)
   // get all transactions associated with a user
   const [transactionState, setTransactionState] = useState([]);
@@ -25,6 +32,32 @@ function Transaction(props) {
       ).catch(err => {
         console.log(err)
       })
+
+ 
+
+  const url2 = "/api/circles/user/" + props.userId
+
+    console.log(url)
+
+    const optionsCircles = {
+
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    }
+    fetch(url2, optionsCircles)
+      .then(res => res.json())
+      .then(data => { 
+        console.log(data);
+        setCircleState(data);
+        setSubmitState({...submitState, circleID: data[0].id})
+      }
+      ).catch(err => {
+        console.log(err)
+      })
+
+
 
   }, []);
 
@@ -49,16 +82,15 @@ function Transaction(props) {
         </div>
       </div>
       {/* do we need this if we have a drop down menu? */}
-      <div className="input-group mb-3">
-        <input type="text" className="form-control" placeholder="Enter Group Name" aria-label="Enter Group Name" />
-      </div>
+      
       <label for="cars">Choose a Circle Name:</label>
 
-      <select name="circle" id="circle">
-        <option value="volvo">Group 1</option>
-        <option value="saab">Group 2</option>
-        <option value="mercedes">Group 3</option>
-        <option value="audi">Group 4</option>
+      <select name="circle" id="circle" onChange={(e)=> {setSubmitState({
+        ...submitState, circleID: parseInt(e.target.value)
+      })
+      }}>
+                {circleState.map((e) => <option value={e.id}>{e.name}</option>)}
+        
       </select>
       <div className="input-group mb-3">
         <input type="text" className="form-control" placeholder="Enter Payment Amount" aria-label="Enter Payment Amount" />
