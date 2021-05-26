@@ -3,7 +3,7 @@ import Login from "./login";
 import Signup from "./signup";
 
 function LoginSignup(props) {
-    props.handleLogout();
+    // props.handleLogout();
 
     return (
         <>
