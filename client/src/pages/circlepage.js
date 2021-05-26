@@ -51,7 +51,7 @@ function CirclePage() {
   return (
     <>
       <div className="card bg-info" style={{ textAlign: "center", backgroundColor: "blue", marginBottom: "50px" }}>
-        <h1>My Group Page</h1>
+        <h1>My Circle Page</h1>
       </div>
       <div className="card text-center" style={{ marginBottom: "50px" }}>
         <div className="card-header">
