@@ -12,33 +12,34 @@ function CirclePage(props) {
 
   });
 
-  console.log(props.userId);
+
+  console.log(props.circleState.circleID);
   // creating state to capture all the circle transactions
-  const [transactionState, newTransactionState] = useState();
+  // const [transactionState, newTransactionState] = useState();
 
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    fetch('/api/transactions', {
-      method: "POST", 
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        ...transactionState
-      })
-    })
-    .then((data) => {
-      console.log("Transaction successful");
-    })
-    .catch();
-  }
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  //   fetch('/api/transactions', {
+  //     method: "POST", 
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({
+  //       ...transactionState
+  //     })
+  //   })
+  //   .then((data) => {
+  //     console.log("Transaction successful");
+  //   })
+  //   .catch();
+  // }
 
-  function handleTransaction(e){
+  // function handleTransaction(e){
     
-  }
+  // }
 
-const url = "/api/circles/user/" + props.userId
+const url = "/api/transactions/circle/" + props.circleState.circleID
 
   useEffect(() => {
     const options = {
@@ -87,8 +88,8 @@ const url = "/api/circles/user/" + props.userId
           <p className="card-text">Math stuff</p>
         </div>
       </div> */}
-      
-      <label for="cars">Choose a Circle Name:</label>
+      {/* FOR FUTURE DEVELOPMENT */}
+      {/* <label for="cars">Choose a Circle Name:</label>
 
       <select name="circle" id="circle" onChange={(e) => {
                   setSubmitState({
@@ -104,14 +105,37 @@ const url = "/api/circles/user/" + props.userId
       </div>
       <div className="input-group mb-3">
         <input type="text" className="form-control" placeholder="Enter Payment Amount" aria-label="Enter Payment Amount" />
-      </div>
+      </div> */}
       <button className="w-20 btn btn-lg btn-info" 
       type="button" 
 
       onClick={(e) => {
-        e.preventDefault();
+        console.log(props.userId)
+        // for future development
+        // const payTransaction = {
+
+        //   method: 'POST',
+        //   headers: {
+        //     'Content-Type': 'application/json',
+           
+        //   },
+        //   body: JSON.stringify({
+        //     description: "something",
+        //     value: 100,
+        //     user
+        //   }),
+        // }
+        // fetch(url, payTransaction)
+        //   .then(res => res.json())
+        //   .then(data => {
+        //     console.log(data);
+        //   }
+        //   ).catch(err => {
+        //     console.log(err)
+        //   });
+
         window.location.pathname = '/transaction';
-      }} id="button-addon2">Pay Now</button>
+      }} id="button-addon2" style={{margin: "5pt"}}>Pay Now</button>
       <button className="w-20 btn btn-lg btn-info" type="button" onClick={(e) => {
         e.preventDefault();
         window.location.pathname = '/invitepage';
