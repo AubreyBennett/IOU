@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { useHistory } from "react-router-dom";
+import Header from '../components/Header/header';
+
 function Dashboard(props) {
   const history = useHistory();
   useEffect(() => {
@@ -21,21 +23,14 @@ function Dashboard(props) {
       });
   }, []);
 
-  const handleLogout = () => {
-    console.log("here");
-    fetch("api/users/logout", {
-      method: "POST"
-    })
-  }
+ 
 
   return (
-    <div className="container" >
-      <div className="row">
-        <div className="col-lg-12" style={{ width: '100%' }}>
-          <div className="row" style={{ justifyContent: 'center' }}>
-            <div className="card text-dark bg-info mb-3" style={{ maxWidth: '18rem' }}>
-              <div className="card-header">Welcome {props.name}</div>
-            </div>
+    <>
+    <div>
+    <Header 
+    header="Welcome "{...props.name}
+    />
             {/* <div className="card-body">
           <h5 className="card-title">Info card title</h5>
           <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -67,12 +62,8 @@ function Dashboard(props) {
           <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         </div> */}
           </div>
-          <button onClick={
-            () => handleLogout()
-          }>LOGOUT</button>
-        </div>
-      </div>
-    </div>
+          </>
+        
   );
 }
 
