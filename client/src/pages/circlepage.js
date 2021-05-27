@@ -1,7 +1,18 @@
 import React, {useEffect, useState} from 'react';
 import Header from '../components/Header/header';
 
-function CirclePage() {
+function CirclePage(props) {
+
+  const [circleState, setCircleState] = useState([]);
+
+  const [submitState, setSubmitState] = useState({
+
+    circleID: 0,
+    users: []
+
+  });
+
+  console.log(props.userId);
   // creating state to capture all the circle transactions
   const [transactionState, newTransactionState] = useState();
 
@@ -27,6 +38,8 @@ function CirclePage() {
     
   }
 
+const url = "/api/circles/user/" + props.userId
+
   useEffect(() => {
     const options = {
       method: 'GET',
@@ -34,18 +47,18 @@ function CirclePage() {
         'Content-Type': 'application/json',
       }
     }
-    fetch(`/api/transactions/circle/user`, options)
+    fetch(url, options)
       .then(res => res.json())
-      .then(data => { console.log(data)}
+      .then(data => { 
+        setCircleState(data);
+        console.log(data);
+        setSubmitState({ ...submitState, circleID: data[0].id });
+      }
       ).catch(err => {
         console.log(err)
       })
 
   }, []);
-
-
-    
-
 
 
 
@@ -74,24 +87,17 @@ function CirclePage() {
           <p className="card-text">Math stuff</p>
         </div>
       </div> */}
+      
       <label for="cars">Choose a Circle Name:</label>
 
-      <select name="circle" id="circle">
-        <option value="volvo">Group 1</option>
-        <option value="saab">Group 2</option>
-        <option value="mercedes">Group 3</option>
-        <option value="audi">Group 4</option>
-      </select>
-      <div className="input-group mb-3">
-        <input type="text" className="form-control" placeholder="Enter Payment Description" aria-label="Enter Payment Description" />
-      </div>
-      <label for="cars">Choose a Circle Name:</label>
+      <select name="circle" id="circle" onChange={(e) => {
+                  setSubmitState({
+                    ...submitState, circleID: parseInt(e.target.value)
+                  })
+                }}>
+                  {circleState.map((e) => <option value={e.id}>{e.name}</option>)}
 
-      <select name="circle" id="circle">
-        <option value="volvo">Group 1</option>
-        <option value="saab">Group 2</option>
-        <option value="mercedes">Group 3</option>
-        <option value="audi">Group 4</option>
+
       </select>
       <div className="input-group mb-3">
         <input type="text" className="form-control" placeholder="Enter Payment Description" aria-label="Enter Payment Description" />
