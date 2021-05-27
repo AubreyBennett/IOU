@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import InviteCard from '../components/Invite/invitecard'
+import Header from '../components/Header/header';
 import {useHistory} from "react-router-dom"
 
 function Invite(props) {
@@ -93,9 +94,10 @@ function handleCheckbox(e){
 
   return (
     <>
-      <div className="card bg-info" style={{ textAlign: "center", marginBottom: "50px" }}>
-        <h1>Invite Page</h1>
-      </div>
+      <div>
+      <Header 
+      header="Invite Page"
+      />
 
       { inviteState.map((element) =>
         <InviteCard data={element} handleCheckbox={handleCheckbox}/>
@@ -115,6 +117,7 @@ function handleCheckbox(e){
         handleSubmit(e);
       
       }} id="button-addon2">Submit</button>
+      </div>
     </>
   );
 }
