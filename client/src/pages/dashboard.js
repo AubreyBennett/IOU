@@ -78,9 +78,9 @@ function Dashboard(props) {
         }} >Create a Circle</button>
       </div>
       <div className="row " style={{ justifyContent: "center" }} >
-      {circleState.map((e) =>
-              <DashCard data={e} />
-            )}
+      {
+        circleState.map((e) => <DashCard data={e} />)
+      }
         </div>
       <div className="row" style={{ justifyContent: 'center' }}>
         <div className="card text-dark bg-info mb-3" style={{ maxWidth: '18rem' }}>
