@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import TransactionCard from '../components/Transaction/transaction';
-import Header from '../components/Header/header';
 
 
 function Transaction(props) {
@@ -38,43 +37,18 @@ function Transaction(props) {
       })
 
 
-    // route for fetching circles, leaving for future development
-    // const url2 = "/api/circles/user/" + props.userId
-
-    //   console.log(url)
-
-    //   const optionsCircles = {
-
-    //     method: 'GET',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     }
-    //   }
-    //   fetch(url2, optionsCircles)
-    //     .then(res => res.json())
-    //     .then(data => { 
-    //       console.log(data);
-    //       setCircleState(data);
-    //       setSubmitState({...submitState, circleID: data[0].id})
-    //     }
-    //     ).catch(err => {
-    //       console.log(err)
-    //     })
-
 
   }, []);
 
 
 
-
-
   return (
     <>
-      <div>
-      <Header 
-      header="Transactions Page"
-      />
-      <div className="container">
+      <div className="card bg-info" style={{ textAlign: "center", marginBottom: "50px" }}>
+
+
+        <h1>Transactions Page</h1>
+      </div>
       <div className="card text-center" style={{ marginBottom: "50px" }}>
         <div className="card-header">
           My Transactions
@@ -104,7 +78,6 @@ function Transaction(props) {
       </select>
       {/* <div className="input-group mb-3">
         <input type="text" className="form-control" placeholder="Enter Payment Amount" aria-label="Enter Payment Amount" />
-
       </div> */}
       <button
         className="w-20 btn btn-lg btn-info"
@@ -138,7 +111,6 @@ function Transaction(props) {
 
           window.location.pathname = '/transaction';
         }} id="button-addon2">Pay Now</button>
-n
     </>
   );
 }
