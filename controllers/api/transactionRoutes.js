@@ -57,14 +57,7 @@ router.get("/user/:id", async (req, res) => {
 // find one transaction by its `id` value
 router.get('/:id', async (req, res) => {
     try {
-        const transactionData = await Transaction.findByPk(req.params.id, {
-            include: [{
-                model: User,
-                exclude: [password]
-            },
-            { model: Circle }
-            ]
-        });
+        const transactionData = await Transaction.findByPk(req.params.id);
         res.status(200).json(transactionData);
     } catch (err) {
         res.status(500).json(err);
@@ -102,6 +95,8 @@ router.put('/:id', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+
 // delete a transaction by its `id` value
 router.delete('/:id', async (req, res) => {
     try {

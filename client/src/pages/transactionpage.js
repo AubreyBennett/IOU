@@ -5,9 +5,20 @@ import Header from '../components/Header/header';
 
 function Transaction(props) {
 
+  // const[circleState, setCircleState] = useState([]);
 
+  const [submitState, setSubmitState] = useState({
+
+    circleID: 0,
+    users: []
+
+  });
+  console.log(props.userId)
   // get all transactions associated with a user
-  const [transactionState, setTransactinState] = useState([]);
+  const [transactionState, setTransactionState] = useState([]);
+
+
+  const url = '/api/transactions/user/' + props.userId
 
   useEffect(() => {
     const options = {
@@ -16,14 +27,45 @@ function Transaction(props) {
         'Content-Type': 'application/json',
       }
     }
-    fetch(`/api/transactions/`, options)
+    fetch(url, options)
       .then(res => res.json())
-      .then(data => { setTransactinState(data) }
+      .then(data => {
+        console.log(data);
+        setTransactionState(data);
+      }
       ).catch(err => {
         console.log(err)
       })
 
+
+    // route for fetching circles, leaving for future development
+    // const url2 = "/api/circles/user/" + props.userId
+
+    //   console.log(url)
+
+    //   const optionsCircles = {
+
+    //     method: 'GET',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     }
+    //   }
+    //   fetch(url2, optionsCircles)
+    //     .then(res => res.json())
+    //     .then(data => { 
+    //       console.log(data);
+    //       setCircleState(data);
+    //       setSubmitState({...submitState, circleID: data[0].id})
+    //     }
+    //     ).catch(err => {
+    //       console.log(err)
+    //     })
+
+
   }, []);
+
+
+
 
 
   return (
@@ -39,35 +81,64 @@ function Transaction(props) {
       </div>
         <div className="card-body">
           <p className="card-text">Where all the transactions go</p>
-         { transactionState.map((element)=>
+          {transactionState.map((element) =>
             <TransactionCard data={element} />
           )}
 
         </div>
       </div>
       {/* do we need this if we have a drop down menu? */}
-      <div className="input-group mb-3">
-        <input type="text" className="form-control" placeholder="Enter Group Name" aria-label="Enter Group Name" />
-      </div>
-      <label for="cars">Choose a Circle Name:</label>
 
-      <select name="circle" id="circle">
-        <option value="volvo">Group 1</option>
-        <option value="saab">Group 2</option>
-        <option value="mercedes">Group 3</option>
-        <option value="audi">Group 4</option>
+      <label for="transactions" style={{ margin: '5px' }}>Choose a Transaction to Pay :</label>
+
+      <select name="circle" id="circle" onChange={(e) => {
+        setSubmitState({
+          ...submitState, circleID: parseInt(e.target.value)
+        })
+        setTransactionState({
+          ...transactionState, id: parseInt(e.target.id)
+        })
+      }}>
+        {transactionState.map((e) => <option value={e.id}>{e.description} {e.value}</option>)}
+
       </select>
-      <div className="input-group mb-3">
+      {/* <div className="input-group mb-3">
         <input type="text" className="form-control" placeholder="Enter Payment Amount" aria-label="Enter Payment Amount" />
-      </div>
-      <div className="row" style={{ justifyContent: 'center' }}>
-      <button className="w-20 btn btn-lg btn-info" type="button" onClick={(e) => {
-        e.preventDefault();
-        window.location.pathname = '/transaction';
-      }} id="button-addon2">Pay Now</button>
-      </div>
-      </div>
-      </div>
+
+      </div> */}
+      <button
+        className="w-20 btn btn-lg btn-info"
+        type="button"
+        style={{ margin: "5px" }}
+        onClick={() => {
+          const tId = parseInt(transactionState[0].id);
+          const url = "/api/transactions/" + tId;
+          console.log(url);
+
+          const payTransaction = {
+
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+             
+            },
+            body: JSON.stringify({
+              id: tId,
+              value: 0
+            }),
+          }
+          fetch(url, payTransaction)
+            .then(res => res.json())
+            .then(data => {
+              console.log(data);
+            }
+            ).catch(err => {
+              console.log(err)
+            });
+
+          window.location.pathname = '/transaction';
+        }} id="button-addon2">Pay Now</button>
+n
     </>
   );
 }
