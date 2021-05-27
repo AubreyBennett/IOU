@@ -34,7 +34,7 @@ function Transaction(props) {
       />
       <div className="card text-center" style={{ marginBottom: "50px" }}>
         <div className="card-header">
-          hello
+          My Transactions
       </div>
         <div className="card-body">
           <p className="card-text">Where all the transactions go</p>
