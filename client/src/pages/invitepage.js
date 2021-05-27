@@ -12,7 +12,10 @@ function Invite(props) {
   console.log(props);
   // get all transactions associated with a user
   const [inviteState, setInviteState] = useState([]);
-  const [circleState, setCircleState] = useState([]);
+  const [circleState, setCircleState] = useState([{
+    id: 0,
+    name: ""
+  }]);
 
   const [submitState, setSubmitState] = useState({
 

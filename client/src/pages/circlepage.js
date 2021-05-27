@@ -3,13 +3,22 @@ import Header from '../components/Header/header';
 
 function CirclePage(props) {
 
-  const [circleState, setCircleState] = useState([]);
+  // Have our selected circle
+  const [circleState, setCircleState] = useState([{
+    id: 0, 
+    name: ""
+  }]);
+
+  // State to store our current selected circle
+  const [selectedCircle, setSelectedCircle] = useState({
+    id: 0,
+    name: ""
+  })
 
   const [submitState, setSubmitState] = useState({
-
-    circleID: 0,
-    users: []
-
+    description: "",
+    value: 0,
+    usercircle_id: 0
   });
 
 
@@ -41,6 +50,8 @@ function CirclePage(props) {
 
 const url = "/api/transactions/circle/" + props.circleState.circleID
 
+console.log(url);
+
   useEffect(() => {
     const options = {
       method: 'GET',
@@ -51,6 +62,7 @@ const url = "/api/transactions/circle/" + props.circleState.circleID
     fetch(url, options)
       .then(res => res.json())
       .then(data => { 
+        console.log(data);
         setCircleState(data);
         console.log(data);
         setSubmitState({ ...submitState, circleID: data[0].id });
@@ -70,6 +82,11 @@ const url = "/api/transactions/circle/" + props.circleState.circleID
       <Header 
       header="My Circle Page"
       />
+      <form>
+        <select id="circleDropdown">
+
+        </select>
+      </form>
       <div className="container">
 
       <div className="card text-center" style={{ marginBottom: "50px" }}>
