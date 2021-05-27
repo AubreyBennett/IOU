@@ -19,6 +19,20 @@ router.post('/addUsers', async ({body}, res) => {
   }
 })
 
+router.get('/:userid/:circleid', async (req, res) => {
+  try {
+    const userCircleData = await UserCircle.findOne({
+      where: {
+        circle_id: req.params.circleid,
+        user_id: req.params.userid
+      }
+    })
+    res.status(200).json(userCircleData.id)
+  } catch (err) {
+    console.log(err);
+    res.json(err)
+  }
+})
 
 router.get('/', async (req, res) => {
  try {
