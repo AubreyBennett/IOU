@@ -39,8 +39,8 @@ function Dashboard(props) {
           <div className="row" style={{ justifyContent: 'center' }}>
             <button type="button" className="btn btn-info" onClick={(e) => {
               e.preventDefault();
-              window.location.href = './newgroup';
-            }} >Create a Group</button>
+              window.location.href = './newcircle';
+            }} >Create a Circle</button>
           </div>
           <div className="row " style={{ justifyContent: "center" }} >
             <div className="card text-dark bg-info mb-3 rounded-circle mt-3" style={{ maxWidth: '13rem', justifyContent: "center" }}>
