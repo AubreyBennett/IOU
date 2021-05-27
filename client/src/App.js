@@ -35,15 +35,21 @@ const handleCircle = (id) => {
     userId: 0
   })
 
-  const handleLogin = () => {
+  const handleLogin = (data) => {
+    const userId = data.user.id
+
+    console.log("USER ID: ", userId)
+
     setUserState({
-      loggedIn: true
+      loggedIn: true,
+      userId: userId
     });
   }
 
   
 
   let history = useHistory();
+
   useEffect(() => {
     // authcheck
 

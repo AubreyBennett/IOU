@@ -31,7 +31,7 @@ function Login(props) {
         if(data.message === "Incorrect email or password, please try again") {
           alert(data.message)
         } else {
-          props.handleLogin();
+          props.handleLogin(data);
           history.push("/dashboard");
         }
 

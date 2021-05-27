@@ -4,7 +4,7 @@ import Header from '../components/Header/header';
 import DashCard from '../components/Dashboard/dashboardcomponent'
 
 function Dashboard(props) {
-  
+
   const history = useHistory();
 
   const [circleState, setCircleState] = useState([]);
@@ -16,7 +16,7 @@ function Dashboard(props) {
 
   });
 
- 
+
   useEffect(() => {
     fetch("/api/users/authcheck", {
       method: "GET"
@@ -44,10 +44,12 @@ function Dashboard(props) {
         'Content-Type': 'application/json',
       }
     }
+
+    
     fetch(url, optionsCircles)
       .then(res => res.json())
       .then(data => {
-        
+
         setCircleState(data);
         setSubmitState({ ...submitState, circleID: data[0].id })
       }
@@ -78,10 +80,10 @@ function Dashboard(props) {
         }} >Create a Circle</button>
       </div>
       <div className="row " style={{ justifyContent: "center" }} >
-      {
-        circleState.map((e) => <DashCard data={e} />)
-      }
-        </div>
+        {
+          circleState.map((e) => <DashCard data={e} />)
+        }
+      </div>
       <div className="row" style={{ justifyContent: 'center' }}>
         <div className="card text-dark bg-info mb-3" style={{ maxWidth: '18rem' }}>
           <button type="button" className="btn btn-info" onClick={(e) => {
