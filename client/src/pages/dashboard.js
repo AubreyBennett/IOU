@@ -4,8 +4,7 @@ import Header from '../components/Header/header';
 import DashCard from '../components/Dashboard/dashboardcomponent'
 
 function Dashboard(props) {
-console.log("--------------------------")
-  console.log(props)
+  
   const history = useHistory();
 
   const [circleState, setCircleState] = useState([]);
@@ -17,6 +16,7 @@ console.log("--------------------------")
 
   });
 
+ 
   useEffect(() => {
     fetch("/api/users/authcheck", {
       method: "GET"
@@ -37,8 +37,6 @@ console.log("--------------------------")
 
     const url = "/api/circles/user/" + props.userID
 
-    console.log(url)
-
     const optionsCircles = {
 
       method: 'GET',
@@ -49,7 +47,7 @@ console.log("--------------------------")
     fetch(url, optionsCircles)
       .then(res => res.json())
       .then(data => {
-        console.log(data);
+        
         setCircleState(data);
         setSubmitState({ ...submitState, circleID: data[0].id })
       }
@@ -80,15 +78,10 @@ console.log("--------------------------")
         }} >Create a Circle</button>
       </div>
       <div className="row " style={{ justifyContent: "center" }} >
-        <div className="card text-dark bg-info mb-3 rounded-circle mt-3" style={{ maxWidth: '13rem', justifyContent: "center" }}>
-          <div className="card-body">
-            <h5 className="card-title" style={{ textAlign: 'center' }} > {circleState.map((element) =>
-              <DashCard data={element} />
-            )}</h5>
-
-          </div>
+      {circleState.map((e) =>
+              <DashCard data={e} />
+            )}
         </div>
-      </div>
       <div className="row" style={{ justifyContent: 'center' }}>
         <div className="card text-dark bg-info mb-3" style={{ maxWidth: '18rem' }}>
           <button type="button" className="btn btn-info" onClick={(e) => {
