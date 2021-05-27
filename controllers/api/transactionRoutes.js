@@ -69,7 +69,8 @@ router.post('/', async (req, res) => {
         const transactionData = await Transaction.create(
             {
                 description: req.body.description,
-                value: req.body.value
+                value: req.body.value,
+                usercircle_id: req.body.usercircle_id
             });
         res.status(200).json(transactionData);
     } catch (err) {
