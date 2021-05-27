@@ -84,7 +84,7 @@ const handleCircle = (id) => {
       <div>
         <RenderNav userState={userState} handleLogout={handleLogout} />
         <Wrapper>
-          <Route exact path={["/", "/dashboard"]} component={Dashboard} />
+          <Route exact path={["/", "/dashboard"]} component={() => <Dashboard userID={userState.userId}/>}  />
           <Route
             exact path='/login'
             component={() => <LoginSignup handleLogin={handleLogin} handleLogout={handleLogout}/>}
