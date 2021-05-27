@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import TransactionCard from '../components/Transaction/transaction';
+import Header from '../components/Header/header';
 
 
 function Transaction(props) {
@@ -27,11 +28,11 @@ function Transaction(props) {
 
   return (
     <>
-      <div className="card bg-info" style={{ textAlign: "center", marginBottom: "50px" }}>
-
-
-        <h1>Transactions Page</h1>
-      </div>
+      <div>
+      <Header 
+      header="Transactions Page"
+      />
+      <div className="container">
       <div className="card text-center" style={{ marginBottom: "50px" }}>
         <div className="card-header">
           My Transactions
@@ -59,10 +60,14 @@ function Transaction(props) {
       <div className="input-group mb-3">
         <input type="text" className="form-control" placeholder="Enter Payment Amount" aria-label="Enter Payment Amount" />
       </div>
+      <div className="row" style={{ justifyContent: 'center' }}>
       <button className="w-20 btn btn-lg btn-info" type="button" onClick={(e) => {
         e.preventDefault();
         window.location.pathname = '/transaction';
       }} id="button-addon2">Pay Now</button>
+      </div>
+      </div>
+      </div>
     </>
   );
 }
