@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { useHistory } from "react-router-dom";
+import Header from '../components/Header/header';
 
 function NewGroup({userId}) {
 
@@ -47,11 +48,11 @@ function NewGroup({userId}) {
 
   return (
     <>
-      <div className="card bg-info" style={{ textAlign: "center", marginBottom: "50px" }}>
-
-
-        <h1>New Circle Page</h1>
-      </div>
+      <div>
+      <Header 
+      header="New Circle Page"
+      />
+      <div className="container">
       <div className="input-group mb-3">
         <input 
         type="text" 
@@ -64,12 +65,16 @@ function NewGroup({userId}) {
         }}
         />
       </div>
+      <div className="row" style={{ justifyContent: 'center' }}>
       <button 
       className="w-20 btn btn-lg btn-info" 
       type="button"
        onClick={(e) => 
         handleCircleCreate(e)} 
         id="button-addon2">Submit</button>
+        </div>
+        </div>
+        </div>
     </>
   );
 }

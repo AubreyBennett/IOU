@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import Header from '../components/Header/header';
 
 function CirclePage() {
   // creating state to capture all the circle transactions
@@ -50,9 +51,11 @@ function CirclePage() {
 
   return (
     <>
-      <div className="card bg-info" style={{ textAlign: "center", backgroundColor: "blue", marginBottom: "50px" }}>
-        <h1>My Circle Page</h1>
-      </div>
+    <div>
+      <Header 
+      header="My Circle Page"
+      />
+      <div className="container">
       <div className="card text-center" style={{ marginBottom: "50px" }}>
         <div className="card-header">
           My Transactions
@@ -80,8 +83,10 @@ function CirclePage() {
       <div className="input-group mb-3">
         <input type="text" className="form-control" placeholder="Enter Payment Amount" aria-label="Enter Payment Amount" />
       </div>
+      <div className="row" style={{ justifyContent: 'center' }}>
       <button className="w-20 btn btn-lg btn-info" 
       type="button" 
+      style ={{marginRight: '100px'}}
       onClick={(e) => {
         e.preventDefault();
         window.location.pathname = '/transaction';
@@ -90,6 +95,9 @@ function CirclePage() {
         e.preventDefault();
         window.location.pathname = '/invitepage';
       }} id="button-addon2">Invite</button>
+      </div>
+      </div>
+      </div>
     </>
   );
 }
